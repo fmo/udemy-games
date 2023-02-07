@@ -1,8 +1,8 @@
 FROM php:8.2-fpm
 
 RUN apt-get update
-RUN apt-get install -y librabbitmq-dev autoconf pkg-config libssl-dev libzip-dev git gcc make autoconf libc-dev vim unzip
-RUN docker-php-ext-install bcmath sockets zip
+RUN apt-get install -y librabbitmq-dev autoconf pkg-config libssl-dev libzip-dev git gcc make autoconf libc-dev vim unzip sqlite3
+RUN docker-php-ext-install bcmath sockets zip mysqli pdo pdo_mysql
 
 RUN pecl install amqp xdebug \
     && docker-php-ext-enable amqp xdebug
