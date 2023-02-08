@@ -23,11 +23,22 @@ framework:
                     queues:
                         query_queue:
                             binding_keys: [ query_routing_key ]
+            guesses-async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                options:
+                    exchange:
+                        name: messages
+                        type: direct
+                        default_publish_routing_key: guesses_routing_key
+                    queues:
+                        guesses_queue:
+                            binding_keys: [ guesses_routing_key ]
 
         routing:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
             'App\Message\Event\GameCreatedEvent': query-async
+            'App\Message\Event\GameEndedEvent': guesses-async
 
 # when@test:
 #    framework:
