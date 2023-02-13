@@ -9,3 +9,9 @@ services:
       - ./.docker/php/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
     ports:
       - "9201:8000"
+    networks:
+      - guess
+
+networks:
+  guess:
+    external: true
