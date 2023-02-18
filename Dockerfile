@@ -18,6 +18,13 @@ RUN git config --global user.email "fmo@example.com" \
 
 WORKDIR /app
 
+COPY ./.docker/php/conf.d/xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+COPY ./.docker/php/conf.d/error_reporting.ini /usr/local/etc/php/conf.d/error_reporting.ini
+
 COPY . .
+
+RUN chmod -R 777 var/app.db
+RUN chown -R $(whoami) var/app.db
+
 
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
