@@ -23,8 +23,4 @@ COPY ./.docker/php/conf.d/error_reporting.ini /usr/local/etc/php/conf.d/error_re
 
 COPY . .
 
-RUN chmod -R 777 var/app.db
-RUN chown -R $(whoami) var/app.db
-
-
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
