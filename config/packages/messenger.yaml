@@ -38,7 +38,7 @@ framework:
             # Route your messages to the transports
             # 'App\Message\YourMessage': async
             'App\Message\Event\GameCreatedEvent': query-async
-            'App\Message\Event\GameEndedEvent': guesses-async
+            'App\Message\Event\GameEndedEvent': [guesses-async, query-async]
 
 # when@test:
 #    framework:
